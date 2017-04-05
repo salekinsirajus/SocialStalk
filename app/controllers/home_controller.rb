@@ -4,7 +4,7 @@ class HomeController < ApplicationController
 
   def index
     @post = Post.new
-    @friends = @user.all_following.unshift(@user)
+    @friends = @user.friends.unshift(@user)
     @activities = PublicActivity::Activity.where(owner_id: @friends).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
   end
 
@@ -13,7 +13,7 @@ class HomeController < ApplicationController
   end
 
   def find_friends
-    @friends = @user.all_following
+    @friends = @user.friends
     @users =  User.where.not(id: @friends.unshift(@user)).paginate(page: params[:page])
   end
 

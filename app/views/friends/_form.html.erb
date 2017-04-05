@@ -9,12 +9,3 @@
     <% end %>
   <% end %>
 </div>
-
-
-<div class="follow">
-  <% if (user.requested_friends(current_user)) && !(current_user.friend_request(user))  %>
-    <%= form_tag accept_path(user_id: user.id), method: :post, remote: true do %>
-      <%= button_tag 'Accept', class: 'btn btn-primary' %>
-    <% end %>
-  <% end %>
-</div>

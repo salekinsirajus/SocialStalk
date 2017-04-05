@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def friends
-    @friends = @user.following_users.paginate(page: params[:page])
+    @friends = @user.friends.paginate(page: params[:page])
   end
 
   def followers
