@@ -1,11 +1,22 @@
 <div class="follow">
   <% if user.friends_with?(current_user) %>
     <%= form_tag unfriend_path(user_id: user.id), method: :post, remote: true do %>
-      <%= button_tag 'unfriend', class: 'btn btn-primary' %>
+      <%= button_tag 'unfriend', class: 'btn btn-primary', onclick:"setTimeout(location.reload(true), 10000);" %>
     <% end %>
+    
   <% else %>
-    <%= form_tag friend_path(user_id: user.id), method: :post, remote: true do %>
-      <%= button_tag 'Add', class: 'btn btn-success' %>
+    <% if (current_user.pending_friends.include? user) %>
+      <%= button_tag 'Request Sent', class: 'btn btn-success', onclick:"setTimeout(location.reload(true), 10000);" %>
+    <% elsif (current_user.requested_friends .include? user)  %>
+      <%= form_tag accept_path(user_id: user.id), method: :post, remote: true do %>
+        <%= button_tag 'Accept', class: 'btn btn-primary', onclick:"setTimeout(location.reload(true), 10000);" %>
+      <% end %>
+    
+    <% else %>
+      <%= form_tag friend_path(user_id: user.id), method: :post, remote: true do %>
+        <%= button_tag 'Add', class: 'btn btn-success', onclick:"setTimeout(location.reload(true), 10000);" %>
+      <% end %>
     <% end %>
+    
   <% end %>
 </div>
