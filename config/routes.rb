@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get :followers
       get :deactivate
       get :mentionable
+      get :search_people
     end
   end
   resources :events, except: [:edit, :update]
@@ -22,6 +23,8 @@ Rails.application.routes.draw do
 
   match :follow, to: 'follows#create', as: :follow, via: :post
   match :unfollow, to: 'follows#destroy', as: :unfollow, via: :post
+  
+  match :search_people, to: 'search_people#search', as: :search, via: :get
   
   match :friend, to: 'friends#create', as: :friend, via: :post
   match :unfriend, to: 'friends#destroy', as: :unfriend, via: :post
