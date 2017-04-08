@@ -1,30 +1,49 @@
 <div id="user-info" class="well">
-  <div class="text-center">
-    <%= render 'shared/avatar', user: @user %><br>
-    <h5><%= link_to @user.name, @user %></h5>
+  <div class="row">
+    <div class="text-center col-sm-6">
+      <%= render 'shared/avatar_big', user: @user %><br>
+    </div>
+    
+    <div class="col-sm-4">
+      <h5>
+        <%= fa_icon 'shield' %>
+        <%= pluralize(@user.posts_count, 'post') %>
+      </h5>
+      <% if @user.dob.present? %>
+        <h5>
+          <%= fa_icon @user.sex %>
+          <%= "#{pluralize(age(@user.dob), 'year')} old" %>
+        </h5>
+      <% end %>
+      <% if @user.location.present? %>
+        <h5>
+          <%= fa_icon 'map-marker' %>
+          <%= @user.location %>
+        </h5>
+      <% end %>
+      <% if @user.school_or_work.present? %>
+        <h5>
+          <%= fa_icon 'map-marker' %>
+          <%= @user.school_or_work %>
+        </h5>
+      <% end %>
+      <% if @user.interests.present? %>
+        <h5>
+          <%= fa_icon 'map-marker' %>
+          <%= @user.interests %>
+        </h5>
+      <% end %>
+    </div>
+    
+    <div class="dropdown col-sm-1">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button>
+      <div class="dropdown-menu">
+        <%= render 'shared/links' %>
+      </div>
+    </div>
   </div>
-  <h5>
-    <%= fa_icon 'shield' %>
-    <%= pluralize(@user.posts_count, 'post') %>
-  </h5>
-  <% if @user.dob.present? %>
-    <h5>
-      <%= fa_icon @user.sex %>
-      <%= "#{pluralize(age(@user.dob), 'year')} old" %>
-    </h5>
-  <% end %>
-  <% if @user.location.present? %>
-    <h5>
-      <%= fa_icon 'map-marker' %>
-      <%= @user.location %>
-    </h5>
-  <% end %>
-  <% if @user.school_or_work.present? %>
-    <h5>
-      <%= fa_icon 'map-marker' %>
-      <%= @user.school_or_work %>
-    </h5>
-  <% end %>
+  
+  
   <br>
   <div class="text-center">
     <% unless is_current_user?(@user) %>

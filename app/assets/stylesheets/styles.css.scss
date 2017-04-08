@@ -41,6 +41,12 @@ h6 {
   height: 50px;
 }
 
+.avatar_big {
+  border: 1px solid $border-color;
+  width : 200px;
+  height: 200px;
+}
+
 .cover {
   width                : 100%;
   height               : 400px;
@@ -167,7 +173,7 @@ textarea {
 #links,
 #user-info {
   h5 {
-    border-bottom: 1px solid $border-color;
+    // border-bottom: 1px solid $border-color;
     padding      : 15px 10px;
     margin       : 0;
   }
