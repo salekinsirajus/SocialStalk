@@ -1,8 +1,10 @@
 <h1>Users:</h1>
-<div id="activities">
   <% @users.each do |user| %>
   <p>
     <%= user.name %>
   </p> 
 <% end %>
-</div>
+
+<% if @users.blank? %>
+  <h4>There are no users with the following the details:</h4>
+<% end %>

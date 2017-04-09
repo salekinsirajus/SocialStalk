@@ -22,8 +22,20 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
   
-  def self.search(search)
+  def self.searchName(search)
     where("name ILIKE ?", "%#{search}%") 
+  end
+  
+  def self.searchLocation(search)
+    where("location ILIKE ?", "%#{search}%") 
+  end
+  
+  def self.searchSchoolWork(search)
+    where("school_or_work ILIKE ?", "%#{search}%") 
+  end
+  
+  def self.searchInterests(search)
+    where("interests ILIKE ?", "%#{search}%") 
   end
 
 end
