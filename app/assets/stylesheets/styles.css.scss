@@ -43,8 +43,10 @@ h6 {
 
 .avatar_big {
   border: 1px solid $border-color;
-  width : 200px;
-  height: 200px;
+  width : 150px;
+  height: 150px;
+  margin-left: 15px;
+  margin-bottom: 10px;
 }
 
 .cover {
@@ -82,7 +84,7 @@ h6 {
 
 .btn {
   font-family: 'Montserrat', sans-serif;
-  padding    : 10px 20px;
+  padding    : 5px 10px;
 }
 
 .btn-primary {
@@ -174,13 +176,13 @@ textarea {
 #user-info {
   h5 {
     // border-bottom: 1px solid $border-color;
-    padding      : 15px 10px;
+    padding      : 7px 8px;
     margin       : 0;
   }
 
   i {
     font-size   : 1.75rem;
-    margin-right: 20px;
+    margin-right: 5px;
   }
 }
 

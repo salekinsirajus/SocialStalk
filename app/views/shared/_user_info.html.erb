@@ -1,35 +1,34 @@
 <div id="user-info" class="well">
   <div class="row">
-    <div class="text-center col-sm-6">
-      <%= render 'shared/avatar_big', user: @user %><br>
-    </div>
-    
-    <div class="col-sm-4">
-      <h5>
+    <div class="text-center col-sm-9">
+      <div class="text-center">
+        <%= render 'shared/avatar_big', user: @user %><br>
+      </div>
+      <h5 class="text-left">
         <%= fa_icon 'shield' %>
         <%= pluralize(@user.posts_count, 'post') %>
       </h5>
       <% if @user.dob.present? %>
-        <h5>
+        <h5 class="text-left">
           <%= fa_icon @user.sex %>
           <%= "#{pluralize(age(@user.dob), 'year')} old" %>
         </h5>
       <% end %>
       <% if @user.location.present? %>
-        <h5>
+        <h5 class="text-left">
           <%= fa_icon 'map-marker' %>
           <%= @user.location %>
         </h5>
       <% end %>
       <% if @user.school_or_work.present? %>
-        <h5>
-          <%= fa_icon 'map-marker' %>
+        <h5 class="text-left">
+          <%= fa_icon 'briefcase' %>
           <%= @user.school_or_work %>
-        </h5>
+        </h5 class="text-left">
       <% end %>
       <% if @user.interests.present? %>
-        <h5>
-          <%= fa_icon 'map-marker' %>
+        <h5 class="text-left">
+          <%= fa_icon 'thumbs-o-up' %>
           <%= @user.interests %>
         </h5>
       <% end %>
@@ -45,10 +44,22 @@
   
   
   <br>
-  <div class="text-center">
+  <div class="text-left">
     <% unless is_current_user?(@user) %>
       <%= render 'friends/form', user: @user %>
       <h6><%= 'Follows you' if current_user.followed_by?(@user) %></h6>
     <% end %>
+     <h5>
+       <%= fa_icon 'address-book' %>
+       <%= link_to 'Friends', friends_user_path(current_user) %>
+     </h5> 
+     <h5>    
+       <%= fa_icon 'users' %>
+       <%= link_to 'Followers', followers_user_path(current_user) %>
+     </h5>
+     <h5>
+       <%= fa_icon 'users' %>
+       <%= link_to 'Following', followers_user_path(current_user) %>
+     </h5>
   </div>
 </div>
