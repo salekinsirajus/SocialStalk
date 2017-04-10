@@ -6,6 +6,10 @@ class UsersController < ApplicationController
 
   def show
     @activities = PublicActivity::Activity.where(owner: @user).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+    
+    if current_user != @user
+      Notification.create(recipient: @user, actor: current_user, action: "viewed your profile", notifiable: nil)
+    end
   end
 
   def edit

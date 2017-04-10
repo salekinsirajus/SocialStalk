@@ -14,6 +14,17 @@
         <% if user_signed_in? %>
           <li><%= link_to(current_user.name, user_path(current_user)) %></li>
           <li><%= link_to('Sign out', destroy_user_session_path, method: :delete) %></li>
+          
+          
+          <li class="nav-item btn-group" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
+          <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= fa_icon "bell" %> <span data-behavior="unread-count"></span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-behavior="notification-items">
+          </div>
+          </li>
+        
+          
         <% else %>
           <li><%= link_to 'About', about_path %></li>
           <li><%= link_to 'Login', user_session_path %></li>
