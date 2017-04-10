@@ -13,6 +13,12 @@ Rails.application.routes.draw do
   end
   resources :events, except: [:edit, :update]
 
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
+
   authenticated :user do
     root to: 'home#index', as: 'home'
   end
