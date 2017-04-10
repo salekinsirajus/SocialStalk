@@ -1,10 +1,34 @@
-<h1>Users:</h1>
-  <% @users.each do |user| %>
-  <p>
-    <%= user.name %>
-  </p> 
-<% end %>
-
-<% if @users.blank? %>
-  <h4>There are no users with the following the details:</h4>
-<% end %>
+<div class="row">
+  
+  <!--Search form-->
+  <div class="col-lg-4" style="text-align:center;">
+    <%= render 'search_people/form' %>
+  </div>
+  
+  <!--Results-->
+  <div id="newsfeed" class="col-lg-8">
+    <h1>Users:</h1>
+      <% @users.each do |user| %>
+      <p>
+        <br>
+          <div id="user-<%= user.id %>" class="row">
+            <div class="col-lg-8">
+              <%= render 'shared/avatar', user: user %>
+              <h5 class="name"><%= link_to user.name, user %></h5>
+            </div>
+            <div class="col-lg-4">
+              <div class="follow">
+                <%= render 'friends/form', user: user %>
+              </div>
+            </div>
+          </div>
+          <br>
+      </p> 
+    <% end %>
+    
+    <% if @users.blank? %>
+      <h4>There are no users that matched your criterion.</h4>
+    <% end %>
+  </div>
+  
+</div>

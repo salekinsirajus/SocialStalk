@@ -1,4 +1,6 @@
 <div class="well">
+    <h3>Search People</h3>
+    <hr>
     <div class="form-inline">
         <%= form_tag(search_path, :method => "get", id: "search-form") do %>
             <%= text_field_tag :search_name, params[:search_name], placeholder: "Search Names", :class => "form-control" %>
