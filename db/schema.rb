@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170404202743) do
+ActiveRecord::Schema.define(version: 20170409154845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,17 @@ ActiveRecord::Schema.define(version: 20170404202743) do
     t.integer  "status"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "recipient_id"
+    t.integer  "actor_id"
+    t.datetime "read_at"
+    t.string   "action"
+    t.integer  "notifiable_id"
+    t.string   "notifiable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text     "content",                     null: false
     t.integer  "user_id"
@@ -118,8 +129,8 @@ ActiveRecord::Schema.define(version: 20170404202743) do
     t.string   "name",                   default: "",     null: false
     t.string   "email",                  default: "",     null: false
     t.string   "encrypted_password",     default: "",     null: false
-    t.string   "interests"
     t.string   "school_or_work"
+    t.string   "interests"
     t.string   "avatar"
     t.string   "cover"
     t.string   "reset_password_token"

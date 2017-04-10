@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
   has_many :events
+  has_many :notifications, foreign_key: :recipient_id
 
   mount_uploader :avatar, AvatarUploader
   mount_uploader :cover, AvatarUploader
