@@ -1,4 +1,4 @@
-# SocialStalk
+# Teal.com
 
 To setup this project on c9:
 * Install ruby on rails
