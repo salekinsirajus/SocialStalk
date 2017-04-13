@@ -1,16 +1,60 @@
 <div class="row">
-  <div class="col-lg-3">
+  <div class="col-lg-4">
     <%= render 'shared/user_info' %>
+    <%= render 'search_people/form' %>
   </div>
-  <div class="col-lg-6 well">
-    <h3>Followers</h3>
-    <hr>
-    <div id="followers">
-      <%= render(@followers) || render('shared/no_resource', resources: 'Followers')  %>
-    </div>
-    <%= render 'shared/paginate', resources: @followers %>
+  
+  <!--Results-->
+  <div class="col-lg-8">
+    <h1>Followers</h1>
+      <% @followers.each do |user| %>
+ 
+          <div id="user-<%= user.id %>" class="row well">
+            <div class="text-center col-sm-3">
+              <div class="text-center">
+                <%= render 'shared/avatar_big', user: user %><br>
+              </div>
+            </div>
+            <div class="text-left col-sm-4" style="margin-left:20px;">
+              <span class="search_name"><%= link_to user.name, user %></span>
+              <% if user.dob.present? %>
+                <h5 class="text-left">
+                  <%= fa_icon user.sex %>
+                  <%= "#{pluralize(age(user.dob), 'year')} old" %>
+                </h5>
+              <% end %>
+              <% if user.location.present? %>
+                <h5 class="text-left">
+                  <%= fa_icon 'map-marker' %>
+                  <%= user.location %>
+                </h5>
+              <% end %>
+              <% if user.school_or_work.present? %>
+                <h5 class="text-left">
+                  <%= fa_icon 'briefcase' %>
+                  <%= user.school_or_work %>
+                </h5 class="text-left">
+              <% end %>
+              <button class="btn btn-default"><%= link_to "View More", user %></button>
+            </div>
+            <div class="col-sm-2">
+              <%= render 'friends/form', user: user %>
+            </div>
+            <div class="col-sm-2">
+              <%= render 'follows/form', user: user %>
+            </div>
+        </div>
+    <% end %>
+    
+    <% if @followers.blank? %>
+      <h4>You do not have any followers at the moment.</h4>
+    <% end %>
   </div>
-  <div class="col-lg-3">
-    <%= render 'shared/links' %>
-  </div>
+
+
+
+
+
+
+
 </div>

@@ -1,4 +1,4 @@
-<div class="follow">
+<div class="friends">
   <% if user.friends_with?(current_user) %>
     <%= form_tag unfriend_path(user_id: user.id), method: :post, remote: true do %>
       <%= button_tag 'unfriend', class: 'btn btn-primary', onclick:"setTimeout(location.reload(true), 10000);" %>
