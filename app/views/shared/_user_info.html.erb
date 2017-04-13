@@ -2,16 +2,13 @@
   
   
   <div class="row">
-    <div class="text-center col-sm-10">
-      <div class="text-center">
-        <%= render 'shared/avatar_big', user: @user %><br>
-      </div>
+    <div class="text-center">
+      <%= render 'shared/avatar_big', user: @user %><br>
     </div>
-    
     <% if is_current_user?(@user) %>
-      <div class="dropdown col-sm-1">
+      <div class="dropdown" style="text-align: right; margin-right:7px;">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button>
-        <div class="dropdown-menu">
+        <div class="dropdown-menu dropdown-menu-right dropdown-menu-user-info">
           <%= render 'shared/links' %>
         </div>
       </div>
@@ -19,7 +16,6 @@
   </div>
   
   <div class="row">
-
       <h5 class="text-center">
         <%= fa_icon 'shield' %>
         <%= pluralize(@user.posts_count, 'post') %>
@@ -48,9 +44,10 @@
           <%= @user.interests %>
         </h5>
       <% end %>
-
   </div>
+  
   <br>
+  
   <div class="text-center">
     <% unless is_current_user?(@user) %>
       <%= render 'friends/form', user: @user %>
@@ -72,6 +69,6 @@
          <%= link_to 'Following', following_user_path(current_user) %>
         </span>
      </h5> 
- 
   </div>
+  
 </div>

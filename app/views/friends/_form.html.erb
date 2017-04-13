@@ -8,9 +8,26 @@
     <% if (current_user.pending_friends.include? user) %>
       <%= button_tag 'Request Sent', class: 'btn btn-success', onclick:"setTimeout(location.reload(true), 10000);" %>
     <% elsif (current_user.requested_friends .include? user)  %>
-      <%= form_tag accept_path(user_id: user.id), method: :post, remote: true do %>
-        <%= button_tag 'Accept', class: 'btn btn-primary', onclick:"setTimeout(location.reload(true), 10000);" %>
-      <% end %>
+      
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Respond
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu" style="min-width: 94px !important;">
+          <li style="text-align:center;">
+              <%= form_tag accept_path(user_id: user.id), method: :post, remote: true do %>
+                <%= button_tag 'Accept', class: 'btn btn-primary respond', onclick:"setTimeout(location.reload(true), 10000);" %>
+              <% end %>
+          </li>
+          <li style="text-align:center;">
+              <%= form_tag decline_path(user_id: user.id), method: :post, remote: true do %>
+                <%= button_tag 'Decline', class: 'btn btn-primary respond', onclick:"setTimeout(location.reload(true), 10000);" %>
+              <% end %>
+          </li>
+
+        </ul>
+      </div>
+      
+      
     
     <% else %>
       <%= form_tag friend_path(user_id: user.id), method: :post, remote: true do %>

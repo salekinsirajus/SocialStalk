@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   match :friend, to: 'friends#create', as: :friend, via: :post
   match :unfriend, to: 'friends#destroy', as: :unfriend, via: :post
   match :accept, to: 'friends#accept', as: :accept, via: :post
+  match :decline, to: 'friends#decline', as: :decline, via: :post
   
   match :like, to: 'likes#create', as: :like, via: :post
   match :unlike, to: 'likes#destroy', as: :unlike, via: :post
