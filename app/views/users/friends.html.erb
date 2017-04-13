@@ -1,16 +1,56 @@
 <div class="row">
-  <div class="col-lg-3">
+  <div class="col-lg-4">
     <%= render 'shared/user_info' %>
+    <%= render 'search_people/form' %>
   </div>
-  <div class="col-lg-6 well">
-    <h3>Friends</h3>
-    <hr>
-    <div id="friends">
-      <%= render(@friends) || render('shared/no_resource', resources: 'Friends') %>
-    </div>
-    <%= render 'shared/paginate', resources: @friends %>
-  </div>
-  <div class="col-lg-3">
-    <%= render 'shared/links' %>
+  
+  <!--Results-->
+  <div class="col-lg-8">
+    <h2>Friends</h2>
+      <% @friends.each do |user| %>
+ 
+          <div id="user-<%= user.id %>" class="row well">
+            <!--Profile picture-->
+            <div class="text-center col-sm-3">
+              <div class="text-center">
+                <%= render 'shared/avatar_big', user: user %><br>
+              </div>
+            </div>
+            <!--Information-->
+            <div class="text-left col-sm-4" style="margin-left:20px;">
+              <span class="search_name"><%= link_to user.name, user %></span>
+              <% if user.dob.present? %>
+                <h5 class="text-left">
+                  <%= fa_icon user.sex %>
+                  <%= "#{pluralize(age(user.dob), 'year')} old" %>
+                </h5>
+              <% end %>
+              <% if user.location.present? %>
+                <h5 class="text-left">
+                  <%= fa_icon 'map-marker' %>
+                  <%= user.location %>
+                </h5>
+              <% end %>
+              <% if user.school_or_work.present? %>
+                <h5 class="text-left">
+                  <%= fa_icon 'briefcase' %>
+                  <%= user.school_or_work %>
+                </h5 class="text-left">
+              <% end %>
+              <button class="btn btn-default"><%= link_to "View More", user %></button>
+            </div>
+            <!--Actions-->
+            <div class="col-sm-3 col-sm-offset-1" style="text-align:right">
+              <%= render 'friends/form', user: user %>
+              <div style="margin-top:5px;">
+                <%= render 'follows/form', user: user %>
+              </div>
+            </div>
+        </div>
+    <% end %>
+    
+    <% if @friends.blank? %>
+      <h4>You are not friends with anyone at the moment.</h4>
+    <% end %>
   </div>
 </div>
