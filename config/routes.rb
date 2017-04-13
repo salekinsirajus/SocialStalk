@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     member do
       get :friends
       get :followers
+      get :following
       get :deactivate
       get :mentionable
       get :search_people
