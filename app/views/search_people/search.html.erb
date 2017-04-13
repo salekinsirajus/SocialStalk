@@ -4,27 +4,44 @@
   <div class="col-lg-4" style="text-align:center;">
     <%= render 'search_people/form' %>
   </div>
-  
   <!--Results-->
   <div id="newsfeed" class="col-lg-8">
     <h1>Users:</h1>
       <% @users.each do |user| %>
         <%if user!=current_user %>
-          <p>
-            <br>
-              <div id="user-<%= user.id %>" class="row">
-                <div class="col-lg-8">
-                  <%= render 'shared/avatar', user: user %>
-                  <h5 class="name"><%= link_to user.name, user %></h5>
-                </div>
-                <div class="col-lg-4">
-                  <div class="follow">
-                    <%= render 'friends/form', user: user %>
-                  </div>
-                </div>
+          <div id="user-<%= user.id %>" class="row well">
+            <div class="text-center col-sm-3">
+              <div class="text-center">
+                <%= render 'shared/avatar_big', user: user %><br>
               </div>
-              <br>
-          </p>
+            </div>
+            <div class="text-left col-sm-3" style="margin-left:20px;">
+              <span class="search_name"><%= link_to user.name, user %></span>
+              <% if user.dob.present? %>
+                <h5 class="text-left">
+                  <%= fa_icon user.sex %>
+                  <%= "#{pluralize(age(user.dob), 'year')} old" %>
+                </h5>
+              <% end %>
+              <% if user.location.present? %>
+                <h5 class="text-left">
+                  <%= fa_icon 'map-marker' %>
+                  <%= user.location %>
+                </h5>
+              <% end %>
+              <% if user.school_or_work.present? %>
+                <h5 class="text-left">
+                  <%= fa_icon 'briefcase' %>
+                  <%= user.school_or_work %>
+                </h5 class="text-left">
+              <% end %>
+              <button class="btn btn-default"><%= link_to "View More", user %></button>
+            </div>
+            <div class="col-sm-2 col-sm-offset-3">
+              <%= render 'friends/form', user: user %>
+            </div>
+        </div>
+
         <% end %>
     <% end %>
     

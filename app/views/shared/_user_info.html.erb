@@ -1,37 +1,11 @@
 <div id="user-info" class="well">
+  
+  
   <div class="row">
-    <div class="text-center col-sm-9">
+    <div class="text-center col-sm-10">
       <div class="text-center">
         <%= render 'shared/avatar_big', user: @user %><br>
       </div>
-      <h5 class="text-left">
-        <%= fa_icon 'shield' %>
-        <%= pluralize(@user.posts_count, 'post') %>
-      </h5>
-      <% if @user.dob.present? %>
-        <h5 class="text-left">
-          <%= fa_icon @user.sex %>
-          <%= "#{pluralize(age(@user.dob), 'year')} old" %>
-        </h5>
-      <% end %>
-      <% if @user.location.present? %>
-        <h5 class="text-left">
-          <%= fa_icon 'map-marker' %>
-          <%= @user.location %>
-        </h5>
-      <% end %>
-      <% if @user.school_or_work.present? %>
-        <h5 class="text-left">
-          <%= fa_icon 'briefcase' %>
-          <%= @user.school_or_work %>
-        </h5 class="text-left">
-      <% end %>
-      <% if @user.interests.present? %>
-        <h5 class="text-left">
-          <%= fa_icon 'thumbs-o-up' %>
-          <%= @user.interests %>
-        </h5>
-      <% end %>
     </div>
     
     <div class="dropdown col-sm-1">
@@ -42,24 +16,60 @@
     </div>
   </div>
   
-  
+  <div class="row">
+
+      <h5 class="text-center">
+        <%= fa_icon 'shield' %>
+        <%= pluralize(@user.posts_count, 'post') %>
+      </h5>
+      <% if @user.dob.present? %>
+        <h5 class="text-center">
+          <%= fa_icon @user.sex %>
+          <%= "#{pluralize(age(@user.dob), 'year')} old" %>
+        </h5>
+      <% end %>
+      <% if @user.location.present? %>
+        <h5 class="text-center">
+          <%= fa_icon 'map-marker' %>
+          <%= @user.location %>
+        </h5>
+      <% end %>
+      <% if @user.school_or_work.present? %>
+        <h5 class="text-center">
+          <%= fa_icon 'briefcase' %>
+          <%= @user.school_or_work %>
+        </h5 class="text-left">
+      <% end %>
+      <% if @user.interests.present? %>
+        <h5 class="text-center">
+          <%= fa_icon 'thumbs-o-up' %>
+          <%= @user.interests %>
+        </h5>
+      <% end %>
+
+  </div>
   <br>
-  <div class="text-left">
+  <div class="text-center">
     <% unless is_current_user?(@user) %>
       <%= render 'friends/form', user: @user %>
       <h6><%= 'Follows you' if current_user.followed_by?(@user) %></h6>
     <% end %>
      <h5>
-       <%= fa_icon 'address-book' %>
-       <%= link_to 'Friends', friends_user_path(current_user) %>
+       <span style="margin-right: 3px;">
+         <%= fa_icon 'address-book' %>
+         <%= link_to 'Friends', friends_user_path(current_user) %> 
+       </span>
+       |
+       <span style="margin:2px 3px;">
+         <%= fa_icon 'users' %>
+         <%= link_to 'Followers', followers_user_path(current_user) %>
+       </span>
+       |
+       <span style="margin-left: 3px;">
+         <%= fa_icon 'users' %>
+         <%= link_to 'Following', followers_user_path(current_user) %>
+        </span>
      </h5> 
-     <h5>    
-       <%= fa_icon 'users' %>
-       <%= link_to 'Followers', followers_user_path(current_user) %>
-     </h5>
-     <h5>
-       <%= fa_icon 'users' %>
-       <%= link_to 'Following', followers_user_path(current_user) %>
-     </h5>
+ 
   </div>
 </div>
