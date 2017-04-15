@@ -9,15 +9,15 @@
       <% @users.each do |user| %>
         <%if user!=current_user %>
           <div id="user-<%= user.id %>" class="row well">
+            <!--Avatar-->
             <div class="text-center col-sm-3">
               <div class="text-center">
                 <%= render 'shared/avatar_big', user: user %><br>
               </div>
             </div>
-            <div class="text-left col-sm-3" style="margin-left:20px;">
-              
+            <!--Info-->
+            <div class="text-left col-sm-4" style="margin-left:20px;">
               <span class="search_name"><%= render 'follows/form', user: user %></span>
-              
               <% if user.dob.present? %>
                 <h5 class="text-left">
                   <%= fa_icon user.sex %>
@@ -38,7 +38,8 @@
               <% end %>
               <button class="btn btn-default"><%= link_to "View More", user %></button>
             </div>
-            <div class="col-sm-2 col-sm-offset-3">
+            <!--Friend button-->
+            <div class="col-sm-2 col-sm-offset-2">
               <%= render 'friends/form', user: user %>
             </div>
         </div>
