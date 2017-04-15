@@ -4,6 +4,6 @@ class Notification < ActiveRecord::Base
     belongs_to :notifiable, polymorphic: true
     
     scope :unread, ->{ where(read_at: nil) }
-    scope :recent, ->{ order(created_at: :desc).limit(10) }
+    scope :recent, ->{ where("created_at >= ? AND created_at <= ?", 3.days.ago, Time.zone.now) and order(created_at: :desc)}
 
 end
