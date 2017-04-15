@@ -5,9 +5,8 @@ class FriendsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     current_user.friend_request(@user)
-    
-    # Add a notification, need to test if notifiable type is te right one
-    Notification.create(recipient: @user, actor: current_user, action: "sent a friend request", notifiable: @user )
+    sender_url = url_for(current_user)
+    Notification.create(recipient: @user, actor: current_user, action: "sent a friend request", notifiable: @user, url: sender_url  )
   end
 
   def destroy
@@ -18,7 +17,8 @@ class FriendsController < ApplicationController
   def accept
     @user = User.find(params[:user_id])
     @user.accept_request(current_user)
-    Notification.create(recipient: current_user, actor: @user, action: "accepted your friend request", notifiable: @user )
+    acceptor_url = url_for(@user)
+    Notification.create(recipient: current_user, actor: @user, action: "accepted your friend request", notifiable: @user, url: acceptor_url )
   end
   
   def decline
