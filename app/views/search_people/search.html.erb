@@ -1,5 +1,4 @@
 <div class="row">
-  
   <!--Search form-->
   <div class="col-lg-4" style="text-align:center;">
     <%= render 'search_people/form' %>
@@ -16,7 +15,9 @@
               </div>
             </div>
             <div class="text-left col-sm-3" style="margin-left:20px;">
-              <span class="search_name"><%= link_to user.name, user %></span>
+              
+              <span class="search_name"><%= render 'follows/form', user: user %></span>
+              
               <% if user.dob.present? %>
                 <h5 class="text-left">
                   <%= fa_icon user.sex %>
@@ -41,13 +42,10 @@
               <%= render 'friends/form', user: user %>
             </div>
         </div>
-
         <% end %>
     <% end %>
-    
     <% if @users.blank? %>
       <h4>There are no users that matched your criterion.</h4>
     <% end %>
   </div>
-  
 </div>

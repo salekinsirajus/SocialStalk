@@ -18,7 +18,7 @@
             </div>
             <!--Information-->
             <div class="text-left col-sm-4" style="margin-left:20px;">
-              <span class="search_name"><%= link_to user.name, user %></span>
+              <span class="search_name"><%= render 'follows/form', user: user %></span>
               <% if user.dob.present? %>
                 <h5 class="text-left">
                   <%= fa_icon user.sex %>
@@ -42,9 +42,6 @@
             <!--Actions-->
             <div class="col-sm-3 col-sm-offset-1" style="text-align:right">
               <%= render 'friends/form', user: user %>
-              <div style="margin-top:5px;">
-                <%= render 'follows/form', user: user %>
-              </div>
             </div>
         </div>
     <% end %>
