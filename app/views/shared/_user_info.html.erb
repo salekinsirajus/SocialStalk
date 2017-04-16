@@ -12,6 +12,10 @@
           <%= render 'shared/links' %>
         </div>
       </div>
+    <% else %>
+      <div style="text-align:center; margin-right:3px 3px;">
+        <h4 style="color:#20B2AA; text-transform: capitalize;"><%= @user.name %></h4>
+      </div>
     <% end %>
   </div>
   
