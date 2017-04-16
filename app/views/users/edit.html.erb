@@ -9,7 +9,7 @@
           <%= render 'shared/avatar', user: @user %>
           <br>
           <br>
-          <%= f.file_field :avatar, :required => 'required' %>
+          <%= f.file_field :avatar %>
         </div>
         <div class="form-group">
           <%= f.label :school_or_work %>
@@ -36,7 +36,7 @@
           <%= f.select :sex, options_for_seasons, class: 'form-control', prompt: 'Select One', :required => 'required' %>
         </div>
         <div class="actions">
-          <%= submit_tag 'Update', class: 'btn btn-primary' %>
+          <%= submit_tag 'I confirm that the information provided is true and accurate', class: 'btn btn-primary' %>
         </div>
       <% end %>
     </div>

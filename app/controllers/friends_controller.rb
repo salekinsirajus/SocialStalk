@@ -17,8 +17,8 @@ class FriendsController < ApplicationController
   def accept
     @user = User.find(params[:user_id])
     @user.accept_request(current_user)
-    acceptor_url = url_for(@user)
-    Notification.create(recipient: current_user, actor: @user, action: "accepted your friend request", notifiable: @user, url: acceptor_url )
+    acceptor_url = url_for(current_user)
+    Notification.create(recipient: @user, actor: current_user, action: "accepted your friend request", notifiable: @user, url: acceptor_url )
   end
   
   def decline
