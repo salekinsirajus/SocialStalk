@@ -4,11 +4,8 @@ class LikesController < ApplicationController
   respond_to :js
 
   def create
-    post_owner = @likeable.activities.last.owner
     @likeable.liked_by current_user
     @likeable.create_activity(:like, owner: current_user)
-    likeable_url = url_for(@likeable)
-    Notification.create(recipient: current_user, actor: current_user, action: "liked", url: likeable_url, notifiable:post_owner)
   end
 
   def destroy

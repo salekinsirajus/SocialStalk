@@ -9,10 +9,6 @@ class CommentsController < ApplicationController
       comment.user = current_user
     end
     @comment.save
-    comment_url = url_for(@commentable)
-    post_owner = @commentable.activities.last.owner
-    #post_owner = @commetable.activities.recipient
-    Notification.create(recipient: post_owner, actor: current_user, action: "commented", url: comment_url)
   end
 
   def destroy
