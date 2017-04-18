@@ -10,7 +10,9 @@
   </div>
   <% else %>
     <%= form_tag follow_path(user_id: user.id), method: :post, remote: true do %>
-      <h5 class="name"><%= button_tag user.name, class: 'btn btn-success', style: "width:none;padding:0px;font-size:21px;color:#428bca;background:none;border:none; text-transform:capitalize;", onclick: "window.location.href='/users/#{user.name.downcase}'"%></h5>
+      <% namestring = user.name.downcase %>
+      <% urlstring = namestring.gsub(' ', '-') %>
+      <h5 class="name"><%= button_tag user.name, class: 'btn btn-success', style: "width:none;padding:0px;font-size:21px;rem;color:#428bca;background:none;border:none;text-transform:capitalize;", onclick: "window.location.href='/users/#{urlstring}'"%></h5>
     <% end %>
   <% end %>
 </div>

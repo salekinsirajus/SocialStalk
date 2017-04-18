@@ -57,6 +57,7 @@
       <%= render 'friends/form', user: @user %>
       <h6><%= 'Follows you' if current_user.followed_by?(@user) %></h6>
     <% end %>
+    <% if is_current_user?(@user) %>
      <h5>
        <span style="margin-right: 3px;">
          <%= fa_icon 'address-book' %>
@@ -73,6 +74,24 @@
          <%= link_to 'Following', following_user_path(current_user) %>
         </span>
      </h5> 
+    <% else %>
+      <h5>
+       <span style="margin-right: 3px;">
+         <%= fa_icon 'address-book' %>
+         <%= link_to 'Friends', friends_user_path(@user) %> 
+       </span>
+       |
+       <span style="margin:2px 3px;">
+         <%= fa_icon 'user-plus' %>
+         <%= link_to 'Followers', followers_user_path(@user) %>
+       </span>
+       |
+       <span style="margin-left: 3px;">
+         <%= fa_icon 'users' %>
+         <%= link_to 'Following', following_user_path(@user) %>
+        </span>
+     </h5> 
+    <% end %>
   </div>
   
 </div>

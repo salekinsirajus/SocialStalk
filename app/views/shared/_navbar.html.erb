@@ -12,6 +12,7 @@
     <div class="collapse navbar-collapse" id="navbar-top">
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
+          <%= link_to "Home", root_url, class: "navbar-brand" %>
           <li style="text-transform: capitalize;"><%= link_to(current_user.name, user_path(current_user)) %></li>
           <li><%= link_to('Sign out', destroy_user_session_path, method: :delete) %></li>
           
@@ -19,7 +20,7 @@
           <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= fa_icon "bell" %> <span data-behavior="unread-count"></span>
           </a>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-behavior="notification-items">
+          <div class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButton" data-behavior="notification-items">
           </div>
           </li>
         

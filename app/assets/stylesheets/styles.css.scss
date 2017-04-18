@@ -35,6 +35,12 @@ h6 {
   };
 }
 
+.scrollable-menu {
+    height: auto;
+    max-height: 400px;
+    overflow-x: hidden;
+}
+
 .avatar {
   border: 1px solid $border-color;
   width : 50px;
