@@ -2,7 +2,7 @@
 
 
 ## General Overview
-This web application functions as a social connector and its primary purpose is to connect users with certain needs to users who can fulfil those needs. Hence, users can search for and connect with other users who are not in close geographic proximity and make their requests. 
+This web application functions as a social connector and its primary purpose is to facilitate the connection of users who have some certain needs with other users who can fulfil those needs. Hence, users can search for, connect with, and make their requests to other users who may not be within close geographic proximity. 
 
 ## Technical Overview
 * Ruby 2.3.1
@@ -11,13 +11,11 @@ This web application functions as a social connector and its primary purpose is 
 * Bootstrap CSS
 
 ## Getting Started
-Please have ruby, ruby on rails and postgresql installed before continuing with setting up this project. Depending on which OS you are using there may be different issues in setting up this project. However, the project should run successfully on c9.io.
+Please have ruby, ruby on rails and postgresql installed before continuing with setting up this project. Depending on which OS you are using there may be different issues in setting up this project. However, the project should run successfully on [c9.io](https://c9.io).
 
 To setup this project, please follow the instructions below:
 * Restart the psql server: `sudo service postgresql restart`
-* Setup the database by running:
-⋅⋅* `rake db:create`  
-⋅⋅* `rake db:schema:dump`
+* Setup the database by running `rake db:create` and `rake db:schema:dump`.
 * Follow [this guide](https://gist.github.com/amolkhanorkar/8706915) to fix the problem below:
 > `PG::Error: ERROR: new encoding (UTF8) is incompatible`
 * Run `rake db:migrate`.
