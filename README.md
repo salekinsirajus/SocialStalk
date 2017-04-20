@@ -23,6 +23,7 @@ To setup this project, please follow the instructions below:
 
 ## Development Gems
 Below is a list of the gems and their use(s) in building the social application:
+* **Rails 4.2.5** - used to scaffold the application structure.
 * **Devise** - user authentication, and security and session management.
 * **CarrierWave** - upload files from the Ruby application.
 * **acts_as_commentable** - implement the commenting feature.        
