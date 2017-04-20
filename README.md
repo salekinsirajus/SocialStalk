@@ -16,8 +16,8 @@ Please have ruby, ruby on rails and postgresql installed before continuing with 
 To setup this project, please follow the instructions below:
 * Restart the psql server: `sudo service postgresql restart`
 * Setup the database by running:
-..* `rake db:create`  
-..* `rake db:schema:dump`
+⋅⋅* `rake db:create`  
+⋅⋅* `rake db:schema:dump`
 * Follow [this guide](https://gist.github.com/amolkhanorkar/8706915) to fix the problem below:
 > `PG::Error: ERROR: new encoding (UTF8) is incompatible`
 * Run `rake db:migrate`.
@@ -25,10 +25,10 @@ To setup this project, please follow the instructions below:
 
 ## Development Gems
 Below is a list of the gems and their use(s) in building the social application:
-* ** Devise ** - user authentication, and security and session management.
-* ** CarrierWave ** - upload files from the Ruby application.
-* ** acts_as_commentable ** - implement the commenting feature.        
-* ** acts_as_follower ** - create relationships between users as follower-following.                       
-* ** public_activity ** - to implement news feed feature.
-* ** will_paginate ** - to paginate the list of records.
-* ** has_friendship ** - create relationships between users as friends.
+* **Devise** - user authentication, and security and session management.
+* **CarrierWave** - upload files from the Ruby application.
+* **acts_as_commentable** - implement the commenting feature.        
+* **acts_as_follower** - create relationships between users as follower-following.                       
+* **public_activity** - to implement news feed feature.
+* **will_paginate** - to paginate the list of records.
+* **has_friendship** - create relationships between users as friends.
