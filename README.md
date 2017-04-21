@@ -31,3 +31,5 @@ Below is a list of the gems and their use(s) in building the social application:
 * **public_activity** - to implement news feed feature.
 * **will_paginate** - to paginate the list of records.
 * **has_friendship** - create relationships between users as friends.
+* **jbuilder** - for writing JSON files
+* **coffee_rails** - writing and executing coffeescript code (primarily notification)
